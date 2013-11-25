@@ -1,0 +1,10 @@
+c:\Users\ibrah_000\documents\visual studio 2012\Projects\SGSCRM\Businness\bin\Debug\Businness.dll
+c:\Users\ibrah_000\documents\visual studio 2012\Projects\SGSCRM\Businness\bin\Debug\Businness.pdb
+c:\Users\ibrah_000\documents\visual studio 2012\Projects\SGSCRM\Businness\obj\Debug\Businness.dll
+c:\Users\ibrah_000\documents\visual studio 2012\Projects\SGSCRM\Businness\obj\Debug\Businness.pdb
+c:\Users\ibrah_000\documents\visual studio 2012\Projects\SGSCRM\Businness\bin\Debug\Businness.dll.config
+c:\Users\ibrah_000\documents\visual studio 2012\Projects\SGSCRM\Businness\bin\Debug\DataType.dll
+c:\Users\ibrah_000\documents\visual studio 2012\Projects\SGSCRM\Businness\bin\Debug\VeriErisimKatmani.dll
+c:\Users\ibrah_000\documents\visual studio 2012\Projects\SGSCRM\Businness\bin\Debug\DataType.pdb
+c:\Users\ibrah_000\documents\visual studio 2012\Projects\SGSCRM\Businness\bin\Debug\VeriErisimKatmani.pdb
+c:\Users\ibrah_000\documents\visual studio 2012\Projects\SGSCRM\Businness\obj\Debug\Businness.csprojResolveAssemblyReference.cache

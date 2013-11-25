@@ -1,0 +1,7 @@
+c:\Users\ibrah_000\documents\visual studio 2012\Projects\SGSCRM\VeriErisimKatmani\bin\Debug\VeriErisimKatmani.dll
+c:\Users\ibrah_000\documents\visual studio 2012\Projects\SGSCRM\VeriErisimKatmani\bin\Debug\VeriErisimKatmani.pdb
+c:\Users\ibrah_000\documents\visual studio 2012\Projects\SGSCRM\VeriErisimKatmani\obj\Debug\VeriErisimKatmani.csprojResolveAssemblyReference.cache
+c:\Users\ibrah_000\documents\visual studio 2012\Projects\SGSCRM\VeriErisimKatmani\obj\Debug\VeriErisimKatmani.dll
+c:\Users\ibrah_000\documents\visual studio 2012\Projects\SGSCRM\VeriErisimKatmani\obj\Debug\VeriErisimKatmani.pdb
+c:\Users\ibrah_000\documents\visual studio 2012\Projects\SGSCRM\VeriErisimKatmani\bin\Debug\DataType.dll
+c:\Users\ibrah_000\documents\visual studio 2012\Projects\SGSCRM\VeriErisimKatmani\bin\Debug\DataType.pdb
