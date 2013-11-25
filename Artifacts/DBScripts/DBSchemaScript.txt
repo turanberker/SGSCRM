@@ -1,1 +1,369 @@
-﻿
+﻿USE [master]
+GO
+/****** Object:  Database [SGSCRM]    Script Date: 25.11.2013 23:31:07 ******/
+CREATE DATABASE [SGSCRM]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'SGSCRM', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL11.MSSQLSERVER\MSSQL\DATA\SGSCRM.mdf' , SIZE = 5120KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+ LOG ON 
+( NAME = N'SGSCRM_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL11.MSSQLSERVER\MSSQL\DATA\SGSCRM_log.ldf' , SIZE = 2048KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+GO
+ALTER DATABASE [SGSCRM] SET COMPATIBILITY_LEVEL = 100
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [SGSCRM].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [SGSCRM] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [SGSCRM] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [SGSCRM] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [SGSCRM] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [SGSCRM] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [SGSCRM] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [SGSCRM] SET AUTO_CREATE_STATISTICS ON 
+GO
+ALTER DATABASE [SGSCRM] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [SGSCRM] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [SGSCRM] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [SGSCRM] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [SGSCRM] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [SGSCRM] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [SGSCRM] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [SGSCRM] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [SGSCRM] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [SGSCRM] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [SGSCRM] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [SGSCRM] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [SGSCRM] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [SGSCRM] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [SGSCRM] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [SGSCRM] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [SGSCRM] SET RECOVERY FULL 
+GO
+ALTER DATABASE [SGSCRM] SET  MULTI_USER 
+GO
+ALTER DATABASE [SGSCRM] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [SGSCRM] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [SGSCRM] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [SGSCRM] SET TARGET_RECOVERY_TIME = 0 SECONDS 
+GO
+USE [SGSCRM]
+GO
+/****** Object:  Table [dbo].[Area]    Script Date: 25.11.2013 23:31:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Area](
+	[Area_ID] [int] IDENTITY(1,1) NOT NULL,
+	[Area_Name] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Area] PRIMARY KEY CLUSTERED 
+(
+	[Area_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Company]    Script Date: 25.11.2013 23:31:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Company](
+	[Company_ID] [int] NOT NULL,
+	[Company_Short_Name] [nvarchar](50) NULL,
+	[Company_Long_Name] [nvarchar](250) NULL,
+	[Tax_Register_No] [nvarchar](50) NULL,
+	[Tax_Department] [nvarchar](50) NULL,
+	[Trade_Registration_No] [nvarchar](50) NULL,
+	[Address] [nvarchar](150) NULL,
+	[City] [nvarchar](50) NULL,
+	[Phone_Number] [nvarchar](50) NULL,
+	[Fax_Number] [nvarchar](50) NULL,
+	[E_Mail] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Company] PRIMARY KEY CLUSTERED 
+(
+	[Company_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Customer]    Script Date: 25.11.2013 23:31:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Customer](
+	[Customer_ID] [bigint] NOT NULL,
+	[FNAME] [nvarchar](50) NULL,
+	[LNAME] [nvarchar](50) NULL,
+	[TC_Number] [nvarchar](11) NULL,
+	[Phone_Number] [nvarchar](50) NULL,
+	[Birth_Date] [date] NULL,
+	[Skin_Type_ID] [int] NULL,
+	[E_Mail] [nvarchar](50) NULL,
+	[Occupation_Type_ID] [int] NULL,
+ CONSTRAINT [PK_Customer] PRIMARY KEY CLUSTERED 
+(
+	[Customer_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Diet]    Script Date: 25.11.2013 23:31:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Diet](
+	[Diet_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Customer_ID] [bigint] NULL,
+	[Employee_ID] [int] NULL,
+	[Date] [date] NULL,
+	[Weight] [decimal](3, 2) NULL,
+	[Tansion] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Diet] PRIMARY KEY CLUSTERED 
+(
+	[Diet_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Diet_Size]    Script Date: 25.11.2013 23:31:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Diet_Size](
+	[Diet_Size_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Diet_ID] [bigint] NULL,
+	[Area_ID] [int] NULL,
+	[Size] [decimal](10, 2) NULL,
+ CONSTRAINT [PK_Diet_Size] PRIMARY KEY CLUSTERED 
+(
+	[Diet_Size_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Employee]    Script Date: 25.11.2013 23:31:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Employee](
+	[Employee_ID] [int] IDENTITY(1,1) NOT NULL,
+	[FNAME] [nvarchar](50) NULL,
+	[LNAME] [nvarchar](50) NULL,
+	[E_Mail] [nvarchar](50) NULL,
+	[Phone_Number] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Employee] PRIMARY KEY CLUSTERED 
+(
+	[Employee_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Lazer_Epilation]    Script Date: 25.11.2013 23:31:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Lazer_Epilation](
+	[Lazer_Epilation_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Date] [date] NULL,
+	[Area_ID] [int] NULL,
+	[Shot_Count] [int] NULL,
+	[Joule] [decimal](10, 2) NULL,
+	[Employee_ID] [int] NOT NULL,
+	[Customer_ID] [bigint] NOT NULL,
+	[Price] [decimal](10, 2) NULL,
+ CONSTRAINT [PK_Lazer_Epilation] PRIMARY KEY CLUSTERED 
+(
+	[Lazer_Epilation_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Occupation_Type]    Script Date: 25.11.2013 23:31:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Occupation_Type](
+	[Occupation_Type_ID] [int] IDENTITY(1,1) NOT NULL,
+	[Occupation_Type_Name] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Occupation_Type] PRIMARY KEY CLUSTERED 
+(
+	[Occupation_Type_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Photo]    Script Date: 25.11.2013 23:31:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Photo](
+	[Photo_ID] [bigint] NOT NULL,
+	[Photo_Path] [nvarchar](150) NULL,
+	[Customer_ID] [bigint] NULL,
+ CONSTRAINT [PK_Photo] PRIMARY KEY CLUSTERED 
+(
+	[Photo_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Skin_Care]    Script Date: 25.11.2013 23:31:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Skin_Care](
+	[Skin_Care_ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Skin_Care_Type_ID] [int] NULL,
+	[Area_ID] [int] NULL,
+	[Employee_ID] [int] NULL,
+	[Customer_ID] [bigint] NULL,
+	[Price] [decimal](10, 2) NULL,
+	[date] [date] NULL,
+ CONSTRAINT [PK_Skin_Care] PRIMARY KEY CLUSTERED 
+(
+	[Skin_Care_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Skin_Care_Type]    Script Date: 25.11.2013 23:31:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Skin_Care_Type](
+	[Skin_Care_Type_ID] [int] IDENTITY(1,1) NOT NULL,
+	[Skin_Care_Type_Name] [nvarchar](50) NULL,
+	[Has_Area] [bit] NULL,
+ CONSTRAINT [PK_Skin_Care_Type] PRIMARY KEY CLUSTERED 
+(
+	[Skin_Care_Type_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Skin_Type]    Script Date: 25.11.2013 23:31:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Skin_Type](
+	[Skin_Type_ID] [int] IDENTITY(1,1) NOT NULL,
+	[Skin_Type_Name] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Skin_Type] PRIMARY KEY CLUSTERED 
+(
+	[Skin_Type_ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+ALTER TABLE [dbo].[Customer]  WITH CHECK ADD  CONSTRAINT [FK_Customer_Occupation_Type] FOREIGN KEY([Occupation_Type_ID])
+REFERENCES [dbo].[Occupation_Type] ([Occupation_Type_ID])
+GO
+ALTER TABLE [dbo].[Customer] CHECK CONSTRAINT [FK_Customer_Occupation_Type]
+GO
+ALTER TABLE [dbo].[Customer]  WITH CHECK ADD  CONSTRAINT [FK_Customer_Skin_Type] FOREIGN KEY([Skin_Type_ID])
+REFERENCES [dbo].[Skin_Type] ([Skin_Type_ID])
+GO
+ALTER TABLE [dbo].[Customer] CHECK CONSTRAINT [FK_Customer_Skin_Type]
+GO
+ALTER TABLE [dbo].[Diet]  WITH CHECK ADD  CONSTRAINT [FK_Diet_Customer] FOREIGN KEY([Customer_ID])
+REFERENCES [dbo].[Customer] ([Customer_ID])
+GO
+ALTER TABLE [dbo].[Diet] CHECK CONSTRAINT [FK_Diet_Customer]
+GO
+ALTER TABLE [dbo].[Diet]  WITH CHECK ADD  CONSTRAINT [FK_Diet_Employee] FOREIGN KEY([Employee_ID])
+REFERENCES [dbo].[Employee] ([Employee_ID])
+GO
+ALTER TABLE [dbo].[Diet] CHECK CONSTRAINT [FK_Diet_Employee]
+GO
+ALTER TABLE [dbo].[Diet_Size]  WITH CHECK ADD  CONSTRAINT [FK_Diet_Size_Area] FOREIGN KEY([Area_ID])
+REFERENCES [dbo].[Area] ([Area_ID])
+GO
+ALTER TABLE [dbo].[Diet_Size] CHECK CONSTRAINT [FK_Diet_Size_Area]
+GO
+ALTER TABLE [dbo].[Diet_Size]  WITH CHECK ADD  CONSTRAINT [FK_Diet_Size_Diet] FOREIGN KEY([Diet_ID])
+REFERENCES [dbo].[Diet] ([Diet_ID])
+GO
+ALTER TABLE [dbo].[Diet_Size] CHECK CONSTRAINT [FK_Diet_Size_Diet]
+GO
+ALTER TABLE [dbo].[Lazer_Epilation]  WITH CHECK ADD  CONSTRAINT [FK_Lazer_Epilation_Area] FOREIGN KEY([Area_ID])
+REFERENCES [dbo].[Area] ([Area_ID])
+GO
+ALTER TABLE [dbo].[Lazer_Epilation] CHECK CONSTRAINT [FK_Lazer_Epilation_Area]
+GO
+ALTER TABLE [dbo].[Lazer_Epilation]  WITH CHECK ADD  CONSTRAINT [FK_Lazer_Epilation_Customer] FOREIGN KEY([Customer_ID])
+REFERENCES [dbo].[Customer] ([Customer_ID])
+GO
+ALTER TABLE [dbo].[Lazer_Epilation] CHECK CONSTRAINT [FK_Lazer_Epilation_Customer]
+GO
+ALTER TABLE [dbo].[Lazer_Epilation]  WITH CHECK ADD  CONSTRAINT [FK_Lazer_Epilation_Employee] FOREIGN KEY([Employee_ID])
+REFERENCES [dbo].[Employee] ([Employee_ID])
+GO
+ALTER TABLE [dbo].[Lazer_Epilation] CHECK CONSTRAINT [FK_Lazer_Epilation_Employee]
+GO
+ALTER TABLE [dbo].[Photo]  WITH CHECK ADD  CONSTRAINT [FK_Photo_Photo] FOREIGN KEY([Customer_ID])
+REFERENCES [dbo].[Customer] ([Customer_ID])
+GO
+ALTER TABLE [dbo].[Photo] CHECK CONSTRAINT [FK_Photo_Photo]
+GO
+ALTER TABLE [dbo].[Skin_Care]  WITH CHECK ADD  CONSTRAINT [FK_Skin_Care_Area] FOREIGN KEY([Area_ID])
+REFERENCES [dbo].[Area] ([Area_ID])
+GO
+ALTER TABLE [dbo].[Skin_Care] CHECK CONSTRAINT [FK_Skin_Care_Area]
+GO
+ALTER TABLE [dbo].[Skin_Care]  WITH CHECK ADD  CONSTRAINT [FK_Skin_Care_Customer] FOREIGN KEY([Customer_ID])
+REFERENCES [dbo].[Customer] ([Customer_ID])
+GO
+ALTER TABLE [dbo].[Skin_Care] CHECK CONSTRAINT [FK_Skin_Care_Customer]
+GO
+ALTER TABLE [dbo].[Skin_Care]  WITH CHECK ADD  CONSTRAINT [FK_Skin_Care_Employee] FOREIGN KEY([Employee_ID])
+REFERENCES [dbo].[Employee] ([Employee_ID])
+GO
+ALTER TABLE [dbo].[Skin_Care] CHECK CONSTRAINT [FK_Skin_Care_Employee]
+GO
+ALTER TABLE [dbo].[Skin_Care]  WITH CHECK ADD  CONSTRAINT [FK_Skin_Care_Skin_Care_Type] FOREIGN KEY([Skin_Care_Type_ID])
+REFERENCES [dbo].[Skin_Care_Type] ([Skin_Care_Type_ID])
+GO
+ALTER TABLE [dbo].[Skin_Care] CHECK CONSTRAINT [FK_Skin_Care_Skin_Care_Type]
+GO
+USE [master]
+GO
+ALTER DATABASE [SGSCRM] SET  READ_WRITE 
+GO
