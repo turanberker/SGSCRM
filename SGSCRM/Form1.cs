@@ -40,11 +40,11 @@ namespace SGSCRM
                     };
                     VeriErisimKatmani.Vek bs = new VeriErisimKatmani.Vek(@"server=.\GTIDB  ;database=SGSCRM;MultipleActiveResultSets=true;Trusted_connection=yes;");
                     // List<Customer> liste1 = bs.Select<Customer>();
-                    List<Customer> liste = bs.Select<Customer>(cus);
-                    DataTable dt = bs.GetDataTable<Customer>(cus);
-                    bs.ExecuteReader<Customer>(CommandType.Text, "Select * from Customer where Customer_ID=@ID", cus.Customer_ID);
-                    bs.Delete<Customer>(cus);
-
+                    //List<Customer> liste = bs.Select<Customer>(cus);
+                   // DataTable dt = bs.GetDataTable<Customer>(cus);
+                   // bs.ExecuteReader<Customer>(CommandType.Text, "Select * from Customer where Customer_ID=@ID", cus.Customer_ID);
+                   // bs.Delete<Customer>(cus);
+                    bs.Insert<Customer>(cus);
                     //   bool sonuc = bs.Update<Customer>(cus);
                     scope.Complete();
                 }

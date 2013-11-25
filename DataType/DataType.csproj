@@ -40,7 +40,12 @@
   <ItemGroup>
     <Compile Include="Customer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TableProp.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VeriErisimKatmani\VeriErisimKatmani.csproj">
+      <Project>{3cb13020-f547-4aa5-b440-caf1c685498e}</Project>
+      <Name>VeriErisimKatmani</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

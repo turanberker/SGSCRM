@@ -12,3 +12,17 @@ c:\users\ibrah_000\documents\visual studio 2012\Projects\SGSCRM\SGSCRM\bin\Debug
 c:\users\ibrah_000\documents\visual studio 2012\Projects\SGSCRM\SGSCRM\bin\Debug\Businness.pdb
 c:\users\ibrah_000\documents\visual studio 2012\Projects\SGSCRM\SGSCRM\bin\Debug\DataType.pdb
 c:\users\ibrah_000\documents\visual studio 2012\Projects\SGSCRM\SGSCRM\bin\Debug\VeriErisimKatmani.pdb
+C:\Projects\SGSCRM\SGSCRM\obj\Debug\SGSCRM.exe
+C:\Projects\SGSCRM\SGSCRM\obj\Debug\SGSCRM.pdb
+C:\Projects\SGSCRM\SGSCRM\bin\Debug\SGSCRM.exe
+C:\Projects\SGSCRM\SGSCRM\bin\Debug\SGSCRM.pdb
+C:\Projects\SGSCRM\SGSCRM\bin\Debug\Businness.dll
+C:\Projects\SGSCRM\SGSCRM\bin\Debug\DataType.dll
+C:\Projects\SGSCRM\SGSCRM\bin\Debug\VeriErisimKatmani.dll
+C:\Projects\SGSCRM\SGSCRM\bin\Debug\Businness.pdb
+C:\Projects\SGSCRM\SGSCRM\bin\Debug\DataType.pdb
+C:\Projects\SGSCRM\SGSCRM\bin\Debug\VeriErisimKatmani.pdb
+C:\Projects\SGSCRM\SGSCRM\obj\Debug\SGSCRM.csprojResolveAssemblyReference.cache
+C:\Projects\SGSCRM\SGSCRM\obj\Debug\SGSCRM.Form1.resources
+C:\Projects\SGSCRM\SGSCRM\obj\Debug\SGSCRM.Properties.Resources.resources
+C:\Projects\SGSCRM\SGSCRM\obj\Debug\SGSCRM.csproj.GenerateResource.Cache

@@ -52,7 +52,7 @@ namespace SGSCRM.Helper
                     smtp.UseDefaultCredentials = false;
                     message.BodyEncoding = System.Text.Encoding.UTF8;
                     smtp.Credentials = new System.Net.NetworkCredential("turstok@gmail.com", "tur123stok");
-                    smtp.Send(message);
+                  //  smtp.Send(message);
                     return true;
                 }
                 else
@@ -84,7 +84,7 @@ namespace SGSCRM.Helper
                     smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                     smtp.UseDefaultCredentials = false;
                     smtp.Credentials = new System.Net.NetworkCredential("turstok@gmail.com", "tur123stok");
-                    smtp.Send(message);
+                  //  smtp.Send(message);
 
 
                     return true;
@@ -119,7 +119,7 @@ namespace SGSCRM.Helper
                     smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                     smtp.UseDefaultCredentials = false;
                     smtp.Credentials = new System.Net.NetworkCredential("turstok@gmail.com", "tur123stok");
-                    smtp.Send(message);
+                 //   smtp.Send(message);
                     return true;
                 }
                 else { return false; }
@@ -150,7 +150,7 @@ namespace SGSCRM.Helper
                     smtp.UseDefaultCredentials = false;
                     smtp.Credentials = new System.Net.NetworkCredential("turstok@gmail.com", "tur123stok");
 
-                    smtp.Send(message);
+               //     smtp.Send(message);
 
                     return true;
                 }

@@ -2,3 +2,10 @@ c:\Users\ibrah_000\documents\visual studio 2012\Projects\SGSCRM\DataType\bin\Deb
 c:\Users\ibrah_000\documents\visual studio 2012\Projects\SGSCRM\DataType\bin\Debug\DataType.pdb
 c:\Users\ibrah_000\documents\visual studio 2012\Projects\SGSCRM\DataType\obj\Debug\DataType.dll
 c:\Users\ibrah_000\documents\visual studio 2012\Projects\SGSCRM\DataType\obj\Debug\DataType.pdb
+C:\Projects\SGSCRM\DataType\obj\Debug\DataType.dll
+C:\Projects\SGSCRM\DataType\obj\Debug\DataType.pdb
+C:\Projects\SGSCRM\DataType\bin\Debug\DataType.dll
+C:\Projects\SGSCRM\DataType\bin\Debug\DataType.pdb
+C:\Projects\SGSCRM\DataType\bin\Debug\VeriErisimKatmani.dll
+C:\Projects\SGSCRM\DataType\bin\Debug\VeriErisimKatmani.pdb
+C:\Projects\SGSCRM\DataType\obj\Debug\DataType.csprojResolveAssemblyReference.cache
