@@ -26,9 +26,9 @@ namespace Businness
         {
             return vek.Insert<Customer>(Entity);
         }
-        public List<Customer> Listele(Customer Entity)
+        public List<Customer> AndListele(Customer Entity)
         {
-            return vek.Select<Customer>(Entity);
+            return vek.AndSelect<Customer>(Entity);
         }
         public List<Customer> Listele()
         {
@@ -41,6 +41,10 @@ namespace Businness
         public DataTable SelectAsDataTable(Customer Entity)
         {
             return vek.GetDataTable<Customer>(Entity);
+        }
+        public List<Customer> ListelebyBirtdate(DateTime gun)
+        {
+            return vek.ExecuteReader<Customer>(CommandType.Text, "Select * from Customer where Birth_Date=@a or Birth_Date=@b", gun.Date, gun.AddDays(1).Date);
         }
     }
 }

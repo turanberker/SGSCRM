@@ -46,6 +46,7 @@
     </Compile>
     <Compile Include="DisposeEt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SMS_Adet_TakipBS.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataType\DataType.csproj">

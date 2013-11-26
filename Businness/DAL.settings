@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="localcon" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">server=.  ;database=TurStok;MultipleActiveResultSets=true;Trusted_connection=yes;</Value>
+      <Value Profile="(Default)">server=.\GTIDB  ;database=SGSCRM;MultipleActiveResultSets=true;Trusted_connection=yes;</Value>
     </Setting>
   </Settings>
 </SettingsFile>

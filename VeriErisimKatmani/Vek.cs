@@ -264,6 +264,42 @@ namespace VeriErisimKatmani
                 return ExecuteReader<T>(CommandType.Text, sb.ToString());
         }
         ///<summary>
+        ///Girilen Entity'nin propertilerine sahip satırları getirir. Select * from TabloAdı where Prop1=val1 AND prop2=Val2.
+        ///</summary>
+        public List<T> AndSelect<T>(Object Entity)
+        {
+            T entity = System.Activator.CreateInstance<T>();
+            entity = Cast<T>(Entity);
+            string EntityName = typeof(T).Name;
+            StringBuilder sb = new StringBuilder();
+            PropertyInfo[] entityProperties = entity.GetType().GetProperties();
+            string WhereCriteri = "";
+            #region Sorgu
+            List<object> parametreler = new List<object>();
+            foreach (PropertyInfo item in entityProperties)
+            {
+                TableProp attribute = Attribute.GetCustomAttribute(item, typeof(TableProp)) as TableProp;
+                object obje = item.GetValue(entity, null);
+                if (obje == null)
+                    continue;
+                else
+                {
+                    if (string.IsNullOrEmpty(WhereCriteri))
+                        WhereCriteri += " " + item.Name + " = @" + item.Name + " ";
+                    else
+                        WhereCriteri += " And " + item.Name + " = @" + item.Name + " ";
+                    parametreler.Add(obje);
+                }
+            }
+            sb.AppendFormat("Select * from {0} where {1}", EntityName, WhereCriteri);
+            #endregion
+            if (parametreler != null)
+                return ExecuteReader<T>(CommandType.Text, sb.ToString(), parametreler.ToArray());
+            else
+                return ExecuteReader<T>(CommandType.Text, sb.ToString());
+        }
+
+        ///<summary>
         ///İstenen Tablonun Bütün Satırlarını Döner.
         ///</summary>
         public DataTable GetDataTable<T>()
@@ -303,6 +339,41 @@ namespace VeriErisimKatmani
                         WhereCriteri += " " + item.Name + " = @" + item.Name + " ";
                     else
                         WhereCriteri += " OR " + item.Name + " = @" + item.Name + " ";
+                    parametreler.Add(obje);
+                }
+            }
+            sb.AppendFormat("Select * from {0} where {1}", EntityName, WhereCriteri);
+            #endregion
+            if (parametreler != null)
+                return GetDataTable(CommandType.Text, sb.ToString(), parametreler.ToArray());
+            else
+                return GetDataTable(CommandType.Text, sb.ToString());
+        }
+        ///<summary>
+        ///Girilen Entity'nin propertilerine sahip satırları getirir. Select * from TabloAdı where Prop1=val1 AND prop2=Val2.
+        ///</summary>
+        public DataTable AndGetDataTable<T>(Object Entity)
+        {
+            T entity = System.Activator.CreateInstance<T>();
+            entity = Cast<T>(Entity);
+            string EntityName = typeof(T).Name;
+            StringBuilder sb = new StringBuilder();
+            PropertyInfo[] entityProperties = entity.GetType().GetProperties();
+            string WhereCriteri = "";
+            #region Sorgu
+            List<object> parametreler = new List<object>();
+            foreach (PropertyInfo item in entityProperties)
+            {
+                TableProp attribute = Attribute.GetCustomAttribute(item, typeof(TableProp)) as TableProp;
+                object obje = item.GetValue(entity, null);
+                if (obje == null)
+                    continue;
+                else
+                {
+                    if (string.IsNullOrEmpty(WhereCriteri))
+                        WhereCriteri += " " + item.Name + " = @" + item.Name + " ";
+                    else
+                        WhereCriteri += " AND " + item.Name + " = @" + item.Name + " ";
                     parametreler.Add(obje);
                 }
             }

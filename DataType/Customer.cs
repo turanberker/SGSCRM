@@ -35,5 +35,9 @@ namespace DataType
 
         [TableProp("Not")]
         public DateTime? Birth_Date { get; set; }
+
+        [TableProp("Not")]
+        public bool? SMS_Request { get; set; }
+        //
     }
 }

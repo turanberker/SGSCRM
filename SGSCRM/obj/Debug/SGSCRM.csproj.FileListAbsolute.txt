@@ -23,6 +23,7 @@ C:\Projects\SGSCRM\SGSCRM\bin\Debug\Businness.pdb
 C:\Projects\SGSCRM\SGSCRM\bin\Debug\DataType.pdb
 C:\Projects\SGSCRM\SGSCRM\bin\Debug\VeriErisimKatmani.pdb
 C:\Projects\SGSCRM\SGSCRM\obj\Debug\SGSCRM.csprojResolveAssemblyReference.cache
-C:\Projects\SGSCRM\SGSCRM\obj\Debug\SGSCRM.Form1.resources
 C:\Projects\SGSCRM\SGSCRM\obj\Debug\SGSCRM.Properties.Resources.resources
 C:\Projects\SGSCRM\SGSCRM\obj\Debug\SGSCRM.csproj.GenerateResource.Cache
+C:\Projects\SGSCRM\SGSCRM\obj\Debug\SGSCRM.FormAcilis.resources
+C:\Projects\SGSCRM\SGSCRM\obj\Debug\SGSCRM.Main.resources

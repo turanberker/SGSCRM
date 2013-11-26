@@ -25,8 +25,8 @@ namespace Businness {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=.  ;database=TurStok;MultipleActiveResultSets=true;Trusted_connection=yes;" +
-            "")]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=.\\GTIDB  ;database=SGSCRM;MultipleActiveResultSets=true;Trusted_connection" +
+            "=yes;")]
         public string localcon {
             get {
                 return ((string)(this["localcon"]));
