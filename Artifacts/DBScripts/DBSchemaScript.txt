@@ -1,6 +1,6 @@
 ﻿USE [master]
 GO
-/****** Object:  Database [SGSCRM]    Script Date: 11/28/2013 11:27:25 ******/
+/****** Object:  Database [SGSCRM]    Script Date: 11/28/2013 17:56:14 ******/
 CREATE DATABASE [SGSCRM] ON  PRIMARY 
 ( NAME = N'SGSCRM', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL10_50.GTIDB\MSSQL\DATA\SGSCRM.mdf' , SIZE = 3072KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
  LOG ON 
@@ -73,7 +73,7 @@ EXEC sys.sp_db_vardecimal_storage_format N'SGSCRM', N'ON'
 GO
 USE [SGSCRM]
 GO
-/****** Object:  Table [dbo].[SMS_Adet_Takip]    Script Date: 11/28/2013 11:27:26 ******/
+/****** Object:  Table [dbo].[SMS_Adet_Takip]    Script Date: 11/28/2013 17:56:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -89,7 +89,7 @@ CREATE TABLE [dbo].[SMS_Adet_Takip](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Skin_Type]    Script Date: 11/28/2013 11:27:26 ******/
+/****** Object:  Table [dbo].[Skin_Type]    Script Date: 11/28/2013 17:56:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -103,7 +103,7 @@ CREATE TABLE [dbo].[Skin_Type](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Skin_Care_Type]    Script Date: 11/28/2013 11:27:26 ******/
+/****** Object:  Table [dbo].[Skin_Care_Type]    Script Date: 11/28/2013 17:56:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -118,7 +118,7 @@ CREATE TABLE [dbo].[Skin_Care_Type](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Employee]    Script Date: 11/28/2013 11:27:26 ******/
+/****** Object:  Table [dbo].[Employee]    Script Date: 11/28/2013 17:56:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -137,7 +137,7 @@ CREATE TABLE [dbo].[Employee](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Occupation_Type]    Script Date: 11/28/2013 11:27:26 ******/
+/****** Object:  Table [dbo].[Occupation_Type]    Script Date: 11/28/2013 17:56:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -151,7 +151,7 @@ CREATE TABLE [dbo].[Occupation_Type](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Company]    Script Date: 11/28/2013 11:27:26 ******/
+/****** Object:  Table [dbo].[Company]    Script Date: 11/28/2013 17:56:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -174,7 +174,7 @@ CREATE TABLE [dbo].[Company](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Area]    Script Date: 11/28/2013 11:27:26 ******/
+/****** Object:  Table [dbo].[Area]    Script Date: 11/28/2013 17:56:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -188,16 +188,16 @@ CREATE TABLE [dbo].[Area](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Customer]    Script Date: 11/28/2013 11:27:26 ******/
+/****** Object:  Table [dbo].[Customer]    Script Date: 11/28/2013 17:56:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Customer](
-	[Customer_ID] [bigint] NOT NULL,
+	[Customer_ID] [bigint] IDENTITY(1,1) NOT NULL,
 	[FNAME] [nvarchar](50) NULL,
 	[LNAME] [nvarchar](50) NULL,
-	[TC_Number] [nvarchar](11) NULL,
+	[TC_Number] [nvarchar](15) NULL,
 	[Phone_Number] [nvarchar](50) NULL,
 	[Birth_Date] [date] NULL,
 	[Skin_Type_ID] [int] NULL,
@@ -210,7 +210,7 @@ CREATE TABLE [dbo].[Customer](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Skin_Care]    Script Date: 11/28/2013 11:27:26 ******/
+/****** Object:  Table [dbo].[Skin_Care]    Script Date: 11/28/2013 17:56:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -229,7 +229,7 @@ CREATE TABLE [dbo].[Skin_Care](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Photo]    Script Date: 11/28/2013 11:27:26 ******/
+/****** Object:  Table [dbo].[Photo]    Script Date: 11/28/2013 17:56:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -244,7 +244,7 @@ CREATE TABLE [dbo].[Photo](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Lazer_Epilation]    Script Date: 11/28/2013 11:27:26 ******/
+/****** Object:  Table [dbo].[Lazer_Epilation]    Script Date: 11/28/2013 17:56:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -264,7 +264,7 @@ CREATE TABLE [dbo].[Lazer_Epilation](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Diet]    Script Date: 11/28/2013 11:27:26 ******/
+/****** Object:  Table [dbo].[Diet]    Script Date: 11/28/2013 17:56:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -282,7 +282,7 @@ CREATE TABLE [dbo].[Diet](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Diet_Size]    Script Date: 11/28/2013 11:27:26 ******/
+/****** Object:  Table [dbo].[Diet_Size]    Script Date: 11/28/2013 17:56:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -298,85 +298,85 @@ CREATE TABLE [dbo].[Diet_Size](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  ForeignKey [FK_Customer_Occupation_Type]    Script Date: 11/28/2013 11:27:26 ******/
+/****** Object:  ForeignKey [FK_Customer_Occupation_Type]    Script Date: 11/28/2013 17:56:15 ******/
 ALTER TABLE [dbo].[Customer]  WITH CHECK ADD  CONSTRAINT [FK_Customer_Occupation_Type] FOREIGN KEY([Occupation_Type_ID])
 REFERENCES [dbo].[Occupation_Type] ([Occupation_Type_ID])
 GO
 ALTER TABLE [dbo].[Customer] CHECK CONSTRAINT [FK_Customer_Occupation_Type]
 GO
-/****** Object:  ForeignKey [FK_Customer_Skin_Type]    Script Date: 11/28/2013 11:27:26 ******/
+/****** Object:  ForeignKey [FK_Customer_Skin_Type]    Script Date: 11/28/2013 17:56:15 ******/
 ALTER TABLE [dbo].[Customer]  WITH CHECK ADD  CONSTRAINT [FK_Customer_Skin_Type] FOREIGN KEY([Skin_Type_ID])
 REFERENCES [dbo].[Skin_Type] ([Skin_Type_ID])
 GO
 ALTER TABLE [dbo].[Customer] CHECK CONSTRAINT [FK_Customer_Skin_Type]
 GO
-/****** Object:  ForeignKey [FK_Skin_Care_Area]    Script Date: 11/28/2013 11:27:26 ******/
+/****** Object:  ForeignKey [FK_Skin_Care_Area]    Script Date: 11/28/2013 17:56:15 ******/
 ALTER TABLE [dbo].[Skin_Care]  WITH CHECK ADD  CONSTRAINT [FK_Skin_Care_Area] FOREIGN KEY([Area_ID])
 REFERENCES [dbo].[Area] ([Area_ID])
 GO
 ALTER TABLE [dbo].[Skin_Care] CHECK CONSTRAINT [FK_Skin_Care_Area]
 GO
-/****** Object:  ForeignKey [FK_Skin_Care_Customer]    Script Date: 11/28/2013 11:27:26 ******/
+/****** Object:  ForeignKey [FK_Skin_Care_Customer]    Script Date: 11/28/2013 17:56:15 ******/
 ALTER TABLE [dbo].[Skin_Care]  WITH CHECK ADD  CONSTRAINT [FK_Skin_Care_Customer] FOREIGN KEY([Customer_ID])
 REFERENCES [dbo].[Customer] ([Customer_ID])
 GO
 ALTER TABLE [dbo].[Skin_Care] CHECK CONSTRAINT [FK_Skin_Care_Customer]
 GO
-/****** Object:  ForeignKey [FK_Skin_Care_Employee]    Script Date: 11/28/2013 11:27:26 ******/
+/****** Object:  ForeignKey [FK_Skin_Care_Employee]    Script Date: 11/28/2013 17:56:15 ******/
 ALTER TABLE [dbo].[Skin_Care]  WITH CHECK ADD  CONSTRAINT [FK_Skin_Care_Employee] FOREIGN KEY([Employee_ID])
 REFERENCES [dbo].[Employee] ([Employee_ID])
 GO
 ALTER TABLE [dbo].[Skin_Care] CHECK CONSTRAINT [FK_Skin_Care_Employee]
 GO
-/****** Object:  ForeignKey [FK_Skin_Care_Skin_Care_Type]    Script Date: 11/28/2013 11:27:26 ******/
+/****** Object:  ForeignKey [FK_Skin_Care_Skin_Care_Type]    Script Date: 11/28/2013 17:56:15 ******/
 ALTER TABLE [dbo].[Skin_Care]  WITH CHECK ADD  CONSTRAINT [FK_Skin_Care_Skin_Care_Type] FOREIGN KEY([Skin_Care_Type_ID])
 REFERENCES [dbo].[Skin_Care_Type] ([Skin_Care_Type_ID])
 GO
 ALTER TABLE [dbo].[Skin_Care] CHECK CONSTRAINT [FK_Skin_Care_Skin_Care_Type]
 GO
-/****** Object:  ForeignKey [FK_Photo_Photo]    Script Date: 11/28/2013 11:27:26 ******/
+/****** Object:  ForeignKey [FK_Photo_Photo]    Script Date: 11/28/2013 17:56:15 ******/
 ALTER TABLE [dbo].[Photo]  WITH CHECK ADD  CONSTRAINT [FK_Photo_Photo] FOREIGN KEY([Customer_ID])
 REFERENCES [dbo].[Customer] ([Customer_ID])
 GO
 ALTER TABLE [dbo].[Photo] CHECK CONSTRAINT [FK_Photo_Photo]
 GO
-/****** Object:  ForeignKey [FK_Lazer_Epilation_Area]    Script Date: 11/28/2013 11:27:26 ******/
+/****** Object:  ForeignKey [FK_Lazer_Epilation_Area]    Script Date: 11/28/2013 17:56:15 ******/
 ALTER TABLE [dbo].[Lazer_Epilation]  WITH CHECK ADD  CONSTRAINT [FK_Lazer_Epilation_Area] FOREIGN KEY([Area_ID])
 REFERENCES [dbo].[Area] ([Area_ID])
 GO
 ALTER TABLE [dbo].[Lazer_Epilation] CHECK CONSTRAINT [FK_Lazer_Epilation_Area]
 GO
-/****** Object:  ForeignKey [FK_Lazer_Epilation_Customer]    Script Date: 11/28/2013 11:27:26 ******/
+/****** Object:  ForeignKey [FK_Lazer_Epilation_Customer]    Script Date: 11/28/2013 17:56:15 ******/
 ALTER TABLE [dbo].[Lazer_Epilation]  WITH CHECK ADD  CONSTRAINT [FK_Lazer_Epilation_Customer] FOREIGN KEY([Customer_ID])
 REFERENCES [dbo].[Customer] ([Customer_ID])
 GO
 ALTER TABLE [dbo].[Lazer_Epilation] CHECK CONSTRAINT [FK_Lazer_Epilation_Customer]
 GO
-/****** Object:  ForeignKey [FK_Lazer_Epilation_Employee]    Script Date: 11/28/2013 11:27:26 ******/
+/****** Object:  ForeignKey [FK_Lazer_Epilation_Employee]    Script Date: 11/28/2013 17:56:15 ******/
 ALTER TABLE [dbo].[Lazer_Epilation]  WITH CHECK ADD  CONSTRAINT [FK_Lazer_Epilation_Employee] FOREIGN KEY([Employee_ID])
 REFERENCES [dbo].[Employee] ([Employee_ID])
 GO
 ALTER TABLE [dbo].[Lazer_Epilation] CHECK CONSTRAINT [FK_Lazer_Epilation_Employee]
 GO
-/****** Object:  ForeignKey [FK_Diet_Customer]    Script Date: 11/28/2013 11:27:26 ******/
+/****** Object:  ForeignKey [FK_Diet_Customer]    Script Date: 11/28/2013 17:56:15 ******/
 ALTER TABLE [dbo].[Diet]  WITH CHECK ADD  CONSTRAINT [FK_Diet_Customer] FOREIGN KEY([Customer_ID])
 REFERENCES [dbo].[Customer] ([Customer_ID])
 GO
 ALTER TABLE [dbo].[Diet] CHECK CONSTRAINT [FK_Diet_Customer]
 GO
-/****** Object:  ForeignKey [FK_Diet_Employee]    Script Date: 11/28/2013 11:27:26 ******/
+/****** Object:  ForeignKey [FK_Diet_Employee]    Script Date: 11/28/2013 17:56:15 ******/
 ALTER TABLE [dbo].[Diet]  WITH CHECK ADD  CONSTRAINT [FK_Diet_Employee] FOREIGN KEY([Employee_ID])
 REFERENCES [dbo].[Employee] ([Employee_ID])
 GO
 ALTER TABLE [dbo].[Diet] CHECK CONSTRAINT [FK_Diet_Employee]
 GO
-/****** Object:  ForeignKey [FK_Diet_Size_Area]    Script Date: 11/28/2013 11:27:26 ******/
+/****** Object:  ForeignKey [FK_Diet_Size_Area]    Script Date: 11/28/2013 17:56:15 ******/
 ALTER TABLE [dbo].[Diet_Size]  WITH CHECK ADD  CONSTRAINT [FK_Diet_Size_Area] FOREIGN KEY([Area_ID])
 REFERENCES [dbo].[Area] ([Area_ID])
 GO
 ALTER TABLE [dbo].[Diet_Size] CHECK CONSTRAINT [FK_Diet_Size_Area]
 GO
-/****** Object:  ForeignKey [FK_Diet_Size_Diet]    Script Date: 11/28/2013 11:27:26 ******/
+/****** Object:  ForeignKey [FK_Diet_Size_Diet]    Script Date: 11/28/2013 17:56:15 ******/
 ALTER TABLE [dbo].[Diet_Size]  WITH CHECK ADD  CONSTRAINT [FK_Diet_Size_Diet] FOREIGN KEY([Diet_ID])
 REFERENCES [dbo].[Diet] ([Diet_ID])
 GO

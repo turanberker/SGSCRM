@@ -156,8 +156,8 @@
             this.btnYeniMusteri.Image = ((System.Drawing.Image)(resources.GetObject("btnYeniMusteri.Image")));
             this.btnYeniMusteri.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnYeniMusteri.Name = "btnYeniMusteri";
-            this.btnYeniMusteri.Size = new System.Drawing.Size(79, 22);
-            this.btnYeniMusteri.Text = "Yeni Kayıt";
+            this.btnYeniMusteri.Size = new System.Drawing.Size(80, 22);
+            this.btnYeniMusteri.Text = "Müşteriler";
             // 
             // tsGirisYapan
             // 

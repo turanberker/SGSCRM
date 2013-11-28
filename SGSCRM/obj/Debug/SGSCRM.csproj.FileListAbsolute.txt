@@ -27,3 +27,5 @@ C:\Projects\SGSCRM\SGSCRM\obj\Debug\SGSCRM.Properties.Resources.resources
 C:\Projects\SGSCRM\SGSCRM\obj\Debug\SGSCRM.csproj.GenerateResource.Cache
 C:\Projects\SGSCRM\SGSCRM\obj\Debug\SGSCRM.FormAcilis.resources
 C:\Projects\SGSCRM\SGSCRM\obj\Debug\SGSCRM.Main.resources
+C:\Projects\SGSCRM\SGSCRM\obj\Debug\SGSCRM.Musteriler.resources
+C:\Projects\SGSCRM\SGSCRM\obj\Debug\SGSCRM.MusteriGuncelleEkle.resources

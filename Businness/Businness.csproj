@@ -46,7 +46,9 @@
     </Compile>
     <Compile Include="DisposeEt.cs" />
     <Compile Include="EmployeeBS.cs" />
+    <Compile Include="Occupation_TypeBS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Skin_TypeBS.cs" />
     <Compile Include="SMS_Adet_TakipBS.cs" />
   </ItemGroup>
   <ItemGroup>

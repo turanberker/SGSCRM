@@ -69,3 +69,41 @@ Incorrect syntax near 'select@@Identity'.   at System.Data.SqlClient.SqlConnecti
 
 ---x---x---x---x---x---x---x---
 
+Tarih = 28.11.2013 17:45 - Formun Adı = MusteriGuncelleEkle - Metod Adı = button1_Click
+
+Transaction Timeout   at System.Transactions.TransactionState.EnlistPromotableSinglePhase(InternalTransaction tx, IPromotableSinglePhaseNotification promotableSinglePhaseNotification, Transaction atomicTransaction)
+   at System.Transactions.Transaction.EnlistPromotableSinglePhase(IPromotableSinglePhaseNotification promotableSinglePhaseNotification)
+   at System.Data.SqlClient.SqlInternalConnection.EnlistNonNull(Transaction tx)
+   at System.Data.ProviderBase.DbConnectionInternal.ActivateConnection(Transaction transaction)
+   at System.Data.ProviderBase.DbConnectionPool.GetConnection(DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.GetConnection(DbConnection owningConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at VeriErisimKatmani.Vek.OpenConnection() in c:\Projects\SGSCRM\VeriErisimKatmani\Vek.cs:line 28
+   at VeriErisimKatmani.Vek.ExecuteScalar(CommandType tip, String sorgu, Object[] degerler) in c:\Projects\SGSCRM\VeriErisimKatmani\Vek.cs:line 421
+   at VeriErisimKatmani.Vek.Insert[T](Object Entity) in c:\Projects\SGSCRM\VeriErisimKatmani\Vek.cs:line 141
+   at Businness.CustomerBS.Insert(Customer Entity) in c:\Projects\SGSCRM\Businness\CustomerBS.cs:line 27
+   at SGSCRM.MusteriGuncelleEkle.button1_Click(Object sender, EventArgs e) in c:\Projects\SGSCRM\SGSCRM\MusteriGuncelleEkle.cs:line 86
+
+---x---x---x---x---x---x---x---
+
+Tarih = 28.11.2013 17:54 - Formun Adı = MusteriGuncelleEkle - Metod Adı = button1_Click
+
+Cannot insert the value NULL into column 'Customer_ID', table 'SGSCRM.dbo.Customer'; column does not allow nulls. INSERT fails.
+The statement has been terminated.   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj)
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at VeriErisimKatmani.Vek.ExecuteScalar(CommandType tip, String sorgu, Object[] degerler) in c:\Projects\SGSCRM\VeriErisimKatmani\Vek.cs:line 422
+   at VeriErisimKatmani.Vek.Insert[T](Object Entity) in c:\Projects\SGSCRM\VeriErisimKatmani\Vek.cs:line 141
+   at Businness.CustomerBS.Insert(Customer Entity) in c:\Projects\SGSCRM\Businness\CustomerBS.cs:line 27
+   at SGSCRM.MusteriGuncelleEkle.button1_Click(Object sender, EventArgs e) in c:\Projects\SGSCRM\SGSCRM\MusteriGuncelleEkle.cs:line 86
+
+---x---x---x---x---x---x---x---
+

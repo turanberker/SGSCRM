@@ -22,29 +22,28 @@ namespace SGSCRM
         }
         public static Employee GirisYapan { get; set; }
         public static string TarihFormat = "dd.MM.yyyy";
-        public Form Varmi(string formname)
-        {
-            Form frm = null;
-            foreach (Form item in this.MdiChildren)
-            {
-                if (item.Name == formname)
-                {
-                    frm = item;
-                    break;
-                }
-            }
-            return frm;
-        }
-        MdiClient client;
+        //public Form Varmi(string formname)
+        //{
+        //    Form frm = null;
+        //    foreach (Form item in this.MdiChildren)
+        //    {
+        //        if (item.Name == formname)
+        //        {
+        //            frm = item;
+        //            break;
+        //        }
+        //    }
+        //    return frm;
+        //}
+        
         private void Main_Load(object sender, EventArgs e)
         {
             toolStripLabel3.Text = DateTime.Today.ToString(TarihFormat);
             if (!this.bwBirtdaySMSSender.IsBusy)
             {
                 this.bwBirtdaySMSSender.RunWorkerAsync();
-            }
-           
-            Form f = Varmi("FormAcilis");
+            }           
+            Form f =  new Helper.Tools(). Varmi("FormAcilis",this as Main);
             if (f == null)
             {
                 f = new FormAcilis();
@@ -149,7 +148,7 @@ namespace SGSCRM
 
         private void bağlanToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form f = Varmi("FormAcilis");
+            Form f = new Helper.Tools().Varmi("FormAcilis", this as Main);
             if (f == null)
             {
                 f = new FormAcilis();

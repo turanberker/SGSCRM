@@ -36,7 +36,7 @@ namespace Businness
         }
         public DataTable SelectAsDataTable()
         {
-            return vek.GetDataTable<Customer>();
+            return vek.GetDataTable(CommandType.Text,"select c.Customer_ID, c.FNAME,c.LNAME, c.TC_Number, c.Phone_Number, c.Birth_Date, oc.Occupation_Type_Name, sk.Skin_Type_Name from Customer c inner join Occupation_Type oc on oc.Occupation_Type_ID=c.Occupation_Type_ID inner join Skin_Type sk on sk.Skin_Type_ID=c.Skin_Type_ID");
         }
         public DataTable SelectAsDataTable(Customer Entity)
         {
@@ -46,5 +46,6 @@ namespace Businness
         {
             return vek.ExecuteReader<Customer>(CommandType.Text, "Select * from Customer where Birth_Date=@a or Birth_Date=@b", gun.Date, gun.AddDays(1).Date);
         }
+        
     }
 }
