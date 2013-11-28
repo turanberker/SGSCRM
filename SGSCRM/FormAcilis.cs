@@ -23,93 +23,42 @@ namespace SGSCRM
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            using (TransactionScope scope = new TransactionScope())
+
+        }
+
+        private void btnGiris_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtKullaniciAdi.Text) || string.IsNullOrEmpty(txtSifre.Text))
             {
-                try
+                MessageBox.Show("Kullanıcı Adı ve Şifre Alanları Boş Geçilemez", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                using (EmployeeBS bs = new EmployeeBS())
                 {
-                    System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("tr-TR");
-                    //Bugün atılmış Olan SMS Sayılarını ve Cinslerini Getiriyor.
-                    SMS_Adet_Takip takip = new SMS_Adet_Takip()
+                    Employee item = new Employee()
                     {
-                        Date = DateTime.Today,
+                        User_Name = txtKullaniciAdi.Text,
+                        Password = txtSifre.Text
                     };
-                    List<SMS_Adet_Takip> liste = new List<SMS_Adet_Takip>();
-                    using (SMS_Adet_TakipBS bs = new SMS_Adet_TakipBS())
+                    List<Employee> emp = bs.Select(item);                   
+                    if (emp.Count() == 0)
                     {
-                        liste = bs.Listele(takip);
+                        MessageBox.Show("Kullanıcı Adı ve(ya) Şifre Hatalı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    string gun = DateTime.Today.DayOfWeek.ToString();
-                    //Bugün Hiç Doğumgünü Kutlama Mesajı Atılmışmı. Atılmamışsa SMS atılacak.
-                    if (liste.Where(c => c.SMS_Type == SMS_TYPE.BirtDate).Count() == 0)
+                    else
                     {
-                        lblYapilanIslem.Text = "Bugün Doğmuş Müşteriler Listeleniyor.";
-                        //Bugün Doğmuş Müşterileri Listele
-                        //Eğer gunlerden Cumartesiyse ertesi gün doğmuş müşterilerede sms atılıyor.
-                        List<Customer> SMSCustList = new List<Customer>();
-                        if (DateTime.Today.DayOfWeek != DayOfWeek.Wednesday)
-                        {
-                            using (CustomerBS cbs = new CustomerBS())
-                            {
-                                Customer cust = new Customer()
-                                {
-                                    Birth_Date = DateTime.Today,
-                                    SMS_Request = true
-                                };
-                                SMSCustList = cbs.AndListele(cust);
-                            }
-                        }
-                        else
-                        {
-                            using (CustomerBS cbs = new CustomerBS())
-                            {
-                                SMSCustList = cbs.ListelebyBirtdate(DateTime.Today);
-                            }
-                        }
-                        if (SMSCustList != null && SMSCustList.Count > 0)
-                        {
-                            lblYapilanIslem.Text = "Doğum Günü Kutlama Mesajları Gönderiliyor";
-                            SMSHelper sms = new SMSHelper();
-                            int counter = 0;
-                            SMSCustList.ForEach(x =>
-                            {
-                                sms.Gonder(x.Phone_Number, "Doğum Gününüz Kutlu Olsun");
-                                counter++;
-                            });
-                            if (counter > 0)//Sms göndermişse, gönderdiği adeti database kaydediyorum.
-                            {
-                                using (SMS_Adet_TakipBS bs = new SMS_Adet_TakipBS())
-                                {
-                                    SMS_Adet_Takip item = new SMS_Adet_Takip()
-                                    {
-                                        Date = DateTime.Today.Date,
-                                        SMS_Count = counter,
-                                        SMS_Type = SMS_TYPE.BirtDate
-                                    };
-                                    if (bs.Insert(item) < 1)
-                                    {
-                                        MessageBox.Show("Gönderilen SMS Adeti Kaydedilemediğinden SMS Gönderilememiştir!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                        return;
-                                    }
-                                }
-                            }
-                            lblYapilanIslem.Text = counter.ToString() + " kişiye SMS Gönderilmiştir.";
-                        }
+                        Main.GirisYapan = emp[0];
+                        Main m = this.MdiParent as Main;
+                        m.tsGirisYapan.Text = Main.GirisYapan.FNAME + " " + Main.GirisYapan.LNAME;
+                        m.tanımlamalarToolStripMenuItem.Enabled = true;
+                        m.yönetimToolStripMenuItem.Enabled = true;
+                        m.bağlanToolStripMenuItem.Enabled = false;
+                        m.çıkışToolStripMenuItem.Enabled = true;
+                        m.btnYeniMusteri.Enabled = true;
+                        this.Close();
                     }
-
                 }
-                catch (Exception exp)
-                {
-                    StackTrace st = new StackTrace();
-                    StackFrame sf = new StackFrame();
-                    new Helper.ExceptionLogger().ThrowExp(exp, this as Form, sf.GetMethod().Name);
-                    return;
-                }
-
-                //Main form2 = new Main();
-                //form2.Activate();
-                //this.Close(); 
-                
-                scope.Complete();
             }
         }
     }

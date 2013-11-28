@@ -30,18 +30,22 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.girişToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bağlanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.çıkışToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.yönetimToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estetisyenlerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.meslekGruplarıToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tanımlamalarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tenTipiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uygulamaBölgeleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tedavilerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnYeniMusteri = new System.Windows.Forms.ToolStripButton();
+            this.tsGirisYapan = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
-            this.tedavilerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bwBirtdaySMSSender = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -49,6 +53,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.girişToolStripMenuItem,
             this.yönetimToolStripMenuItem,
             this.tanımlamalarToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -57,11 +62,36 @@
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // girişToolStripMenuItem
+            // 
+            this.girişToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bağlanToolStripMenuItem,
+            this.çıkışToolStripMenuItem});
+            this.girişToolStripMenuItem.Name = "girişToolStripMenuItem";
+            this.girişToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
+            this.girişToolStripMenuItem.Text = "Giriş";
+            // 
+            // bağlanToolStripMenuItem
+            // 
+            this.bağlanToolStripMenuItem.Name = "bağlanToolStripMenuItem";
+            this.bağlanToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.bağlanToolStripMenuItem.Text = "Bağlan";
+            this.bağlanToolStripMenuItem.Click += new System.EventHandler(this.bağlanToolStripMenuItem_Click);
+            // 
+            // çıkışToolStripMenuItem
+            // 
+            this.çıkışToolStripMenuItem.Enabled = false;
+            this.çıkışToolStripMenuItem.Name = "çıkışToolStripMenuItem";
+            this.çıkışToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.çıkışToolStripMenuItem.Text = "Çıkış";
+            this.çıkışToolStripMenuItem.Click += new System.EventHandler(this.çıkışToolStripMenuItem_Click);
+            // 
             // yönetimToolStripMenuItem
             // 
             this.yönetimToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.estetisyenlerToolStripMenuItem,
             this.meslekGruplarıToolStripMenuItem});
+            this.yönetimToolStripMenuItem.Enabled = false;
             this.yönetimToolStripMenuItem.Name = "yönetimToolStripMenuItem";
             this.yönetimToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.yönetimToolStripMenuItem.Text = "Yönetim";
@@ -84,6 +114,7 @@
             this.tenTipiToolStripMenuItem,
             this.uygulamaBölgeleriToolStripMenuItem,
             this.tedavilerToolStripMenuItem});
+            this.tanımlamalarToolStripMenuItem.Enabled = false;
             this.tanımlamalarToolStripMenuItem.Name = "tanımlamalarToolStripMenuItem";
             this.tanımlamalarToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
             this.tanımlamalarToolStripMenuItem.Text = "Tanımlamalar";
@@ -100,11 +131,17 @@
             this.uygulamaBölgeleriToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.uygulamaBölgeleriToolStripMenuItem.Text = "Uygulama Bölgeleri";
             // 
+            // tedavilerToolStripMenuItem
+            // 
+            this.tedavilerToolStripMenuItem.Name = "tedavilerToolStripMenuItem";
+            this.tedavilerToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.tedavilerToolStripMenuItem.Text = "Tedaviler";
+            // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnYeniMusteri,
-            this.toolStripLabel2,
+            this.tsGirisYapan,
             this.toolStripSeparator1,
             this.toolStripLabel3});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
@@ -115,24 +152,25 @@
             // 
             // btnYeniMusteri
             // 
+            this.btnYeniMusteri.Enabled = false;
             this.btnYeniMusteri.Image = ((System.Drawing.Image)(resources.GetObject("btnYeniMusteri.Image")));
             this.btnYeniMusteri.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnYeniMusteri.Name = "btnYeniMusteri";
             this.btnYeniMusteri.Size = new System.Drawing.Size(79, 22);
             this.btnYeniMusteri.Text = "Yeni Kayıt";
             // 
+            // tsGirisYapan
+            // 
+            this.tsGirisYapan.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsGirisYapan.Name = "tsGirisYapan";
+            this.tsGirisYapan.Size = new System.Drawing.Size(63, 22);
+            this.tsGirisYapan.Text = "Giriş Yapın";
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripLabel2
-            // 
-            this.toolStripLabel2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(66, 22);
-            this.toolStripLabel2.Text = "Giriş Yapan";
             // 
             // toolStripLabel3
             // 
@@ -141,11 +179,9 @@
             this.toolStripLabel3.Size = new System.Drawing.Size(34, 22);
             this.toolStripLabel3.Text = "Tarih";
             // 
-            // tedavilerToolStripMenuItem
+            // bwBirtdaySMSSender
             // 
-            this.tedavilerToolStripMenuItem.Name = "tedavilerToolStripMenuItem";
-            this.tedavilerToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
-            this.tedavilerToolStripMenuItem.Text = "Tedaviler";
+            this.bwBirtdaySMSSender.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwBirtdaySMSSender_DoWork);
             // 
             // Main
             // 
@@ -170,19 +206,23 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem yönetimToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem estetisyenlerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem meslekGruplarıToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tanımlamalarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tenTipiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem uygulamaBölgeleriToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tedavilerToolStripMenuItem;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton btnYeniMusteri;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel3;
+        private System.ComponentModel.BackgroundWorker bwBirtdaySMSSender;
+        public System.Windows.Forms.MenuStrip menuStrip1;
+        public System.Windows.Forms.ToolStrip toolStrip1;
+        public System.Windows.Forms.ToolStripLabel tsGirisYapan;
+        private System.Windows.Forms.ToolStripMenuItem girişToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem bağlanToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem çıkışToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem yönetimToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem tanımlamalarToolStripMenuItem;
+        public System.Windows.Forms.ToolStripButton btnYeniMusteri;
 
 
     }
