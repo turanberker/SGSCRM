@@ -21,6 +21,31 @@ namespace SGSCRM
         {
             InitializeComponent();
             Musterilerformu = MusterilerFormu;
+            CMBDoldur();
+        }
+        public MusteriGuncelleEkle(Musteriler MusterilerFormu, long MusteriID)
+        {
+            InitializeComponent();
+            Musterilerformu = MusterilerFormu;
+            using (CustomerBS bs = new CustomerBS())
+            {
+                Customer item = new Customer()
+                {
+                    Customer_ID = MusteriID
+                };
+                item = bs.AndListele(item)[0];
+                txtAdi.Text = item.FNAME;
+                txtSoyadi.Text = item.LNAME;
+                txtTCNo.Text = item.TC_Number;
+                txtEPosta.Text = item.E_Mail;
+                mtxtCepTel.Text = item.Phone_Number;
+                mtxtDogumTarihi.Text = item.Birth_Date.Value.ToString(Main.TarihFormat);
+                CMBDoldur();
+                cmbCiltTipi.SelectedValue = item.Skin_Type_ID;
+                cmbMeslegi.SelectedItem = item.Occupation_Type_ID;
+                button1.Tag = item.Customer_ID;
+                button1.Text = "Güncelle";
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -29,7 +54,7 @@ namespace SGSCRM
             {
                 try
                 {
-                    if (string.IsNullOrEmpty(txtAdi.Text)|| string.IsNullOrEmpty(txtTCNo.Text)|| string.IsNullOrEmpty(txtSoyadi.Text) || mtxtCepTel.Text.Length != 13 || string.IsNullOrEmpty(txtEPosta.Text))
+                    if (string.IsNullOrEmpty(txtAdi.Text) || string.IsNullOrEmpty(txtTCNo.Text) || string.IsNullOrEmpty(txtSoyadi.Text) || mtxtCepTel.Text.Length != 13 || string.IsNullOrEmpty(txtEPosta.Text))
                     {
                         MessageBox.Show("İlgili Alanları Doldurunuz!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -40,9 +65,8 @@ namespace SGSCRM
                         MessageBox.Show("Tarih Alanına Yanlış Veri Girdiniz!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    
                     int? ciltipiID = null;
-                    if (cmbCiltTipi.SelectedValue==null&&string.IsNullOrEmpty(cmbCiltTipi.SelectedText) && !string.IsNullOrEmpty(cmbCiltTipi.Text))
+                    if (cmbCiltTipi.SelectedValue == null && string.IsNullOrEmpty(cmbCiltTipi.SelectedText) && !string.IsNullOrEmpty(cmbCiltTipi.Text))
                     {
                         using (Skin_TypeBS bs = new Skin_TypeBS())
                         {
@@ -54,7 +78,7 @@ namespace SGSCRM
                         }
                     }
                     int? MeslekId = null;
-                    if (cmbMeslegi.SelectedValue==null&& string.IsNullOrEmpty(cmbMeslegi.SelectedText) && !string.IsNullOrEmpty(cmbMeslegi.Text))
+                    if (cmbMeslegi.SelectedValue == null && string.IsNullOrEmpty(cmbMeslegi.SelectedText) && !string.IsNullOrEmpty(cmbMeslegi.Text))
                     {
                         using (Occupation_TypeBS bs = new Occupation_TypeBS())
                         {
@@ -83,14 +107,30 @@ namespace SGSCRM
                             SMS_Request = cmbSMSReq.Checked,
                             TC_Number = txtTCNo.Text
                         };
-                        if (bs.Insert(item) > 0)
+                        if (button1.Text == "Ekle")
                         {
-                            MessageBox.Show("Kayıt İşlemi Başarıyla Tamamlanmıştır!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if (bs.Insert(item) > 0)
+                            {
+                                MessageBox.Show("Kayıt İşlemi Başarıyla Tamamlanmıştır!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Kayıt Sırasında Hata Oluşmuştur!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                         }
-                        else
+                        if (button1.Text == "Güncelle")
                         {
-                            MessageBox.Show("Kayıt Sırasında Hata Oluşmuştur!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
+                            item.Customer_ID = Convert.ToInt64(button1.Tag);
+                            if (bs.Update(item))
+                            {
+                                MessageBox.Show("Kayıt İşlemi Başarıyla Tamamlanmıştır!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Kayıt Sırasında Hata Oluşmuştur!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                         }
                     }
                     Musterilerformu.DataGridDoldur();
@@ -108,6 +148,11 @@ namespace SGSCRM
         }
 
         private void MusteriGuncelleEkle_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CMBDoldur()
         {
             cmbCiltTipi.ValueMember = "Skin_Type_ID";
             cmbCiltTipi.DisplayMember = "Skin_Type_Name";

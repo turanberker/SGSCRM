@@ -172,5 +172,21 @@ namespace SGSCRM
             btnYeniMusteri.Enabled = false;
             tsGirisYapan.Text = "Giriş Yapın";
         }
+
+        private void btnYeniMusteri_Click(object sender, EventArgs e)
+        {
+            Form f = new Helper.Tools().Varmi("Musteriler", this as Main);
+            if (f == null)
+            {
+                f = new Musteriler();
+                f.MdiParent = this;
+                f.Show();
+            }
+            else
+            {
+                f.BringToFront();
+                this.ActivateMdiChild(f);
+            }
+        }
     }
 }

@@ -12,12 +12,12 @@ namespace SGSCRM
 {
     public partial class Musteriler : Form
     {
-        public Musteriler(Main Anaform)
+        public Musteriler()
         {
             InitializeComponent();
-            anaform = Anaform;
+
         }
-        Main anaform;
+
         DataTable musterilerdt;
         private void Musteriler_Load(object sender, EventArgs e)
         {
@@ -34,11 +34,11 @@ namespace SGSCRM
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            Form f = new Helper.Tools().Varmi("MusteriGuncelleEkle", anaform);
+            Form f = new Helper.Tools().Varmi("MusteriGuncelleEkle", this.MdiParent as Main);
             if (f == null)
             {
                 f = new MusteriGuncelleEkle(this);
-                f.MdiParent = anaform;
+                f.MdiParent = this.MdiParent as Main;
                 f.Show();
             }
             else
@@ -49,14 +49,14 @@ namespace SGSCRM
         }
         protected void Filtrele()
         {
-            DataTable gMusterilerdt ;
-            if(!string.IsNullOrEmpty(tstxtAdi.Text))
+            DataTable gMusterilerdt;
+            if (!string.IsNullOrEmpty(tstxtAdi.Text))
             {
                 using (DataView dw = new DataView(musterilerdt))
                 {
-                    dw.RowFilter=string.Format( "FNAME like '%{0}%'",tstxtAdi.Text);
+                    dw.RowFilter = string.Format("FNAME like '%{0}%'", tstxtAdi.Text);
                     gMusterilerdt = dw.ToTable();
-                }                
+                }
             }
             else
             {
@@ -121,7 +121,26 @@ namespace SGSCRM
                 }
             }
             grdMusteriler.DataSource = gMusterilerdt;
-           
+
+        }
+
+        private void grdMusteriler_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            long CustomerID = Convert.ToInt64(grdMusteriler.Rows[e.RowIndex].Cells["Customer_ID"].Value);
+
+            Form f = new Helper.Tools().Varmi("MusteriGuncelleEkle", this.MdiParent as Main);
+            if (f != null)
+            {
+                f.Close();
+            }
+            f = new MusteriGuncelleEkle(this, CustomerID);
+            f.MdiParent = this.MdiParent;
+            f.Show();
+        }
+
+        private void tstxtAdi_TextChanged(object sender, EventArgs e)
+        {
+            Filtrele();
         }
     }
 }

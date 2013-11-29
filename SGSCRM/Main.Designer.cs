@@ -158,6 +158,7 @@
             this.btnYeniMusteri.Name = "btnYeniMusteri";
             this.btnYeniMusteri.Size = new System.Drawing.Size(80, 22);
             this.btnYeniMusteri.Text = "Müşteriler";
+            this.btnYeniMusteri.Click += new System.EventHandler(this.btnYeniMusteri_Click);
             // 
             // tsGirisYapan
             // 
@@ -192,8 +193,10 @@
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "Main";
             this.Text = "SGS Beauty";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Main_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

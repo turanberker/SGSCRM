@@ -94,6 +94,7 @@
             this.grdMusteriler.ReadOnly = true;
             this.grdMusteriler.Size = new System.Drawing.Size(1221, 591);
             this.grdMusteriler.TabIndex = 0;
+            this.grdMusteriler.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdMusteriler_CellClick);
             // 
             // Customer_ID
             // 
@@ -233,6 +234,7 @@
             // 
             this.tstxtAdi.Name = "tstxtAdi";
             this.tstxtAdi.Size = new System.Drawing.Size(100, 25);
+            this.tstxtAdi.TextChanged += new System.EventHandler(this.tstxtAdi_TextChanged);
             // 
             // toolStripSeparator1
             // 
@@ -249,6 +251,7 @@
             // 
             this.tstxtSoyadi.Name = "tstxtSoyadi";
             this.tstxtSoyadi.Size = new System.Drawing.Size(100, 25);
+            this.tstxtSoyadi.TextChanged += new System.EventHandler(this.tstxtAdi_TextChanged);
             // 
             // toolStripSeparator2
             // 
@@ -265,6 +268,7 @@
             // 
             this.tstxtTCNo.Name = "tstxtTCNo";
             this.tstxtTCNo.Size = new System.Drawing.Size(100, 25);
+            this.tstxtTCNo.TextChanged += new System.EventHandler(this.tstxtAdi_TextChanged);
             // 
             // toolStripSeparator3
             // 
@@ -281,6 +285,7 @@
             // 
             this.tstxtCepTel.Name = "tstxtCepTel";
             this.tstxtCepTel.Size = new System.Drawing.Size(100, 25);
+            this.tstxtCepTel.TextChanged += new System.EventHandler(this.tstxtAdi_TextChanged);
             // 
             // toolStripSeparator4
             // 
@@ -308,6 +313,7 @@
             // 
             this.tstxtMaslegi.Name = "tstxtMaslegi";
             this.tstxtMaslegi.Size = new System.Drawing.Size(100, 25);
+            this.tstxtMaslegi.TextChanged += new System.EventHandler(this.tstxtAdi_TextChanged);
             // 
             // toolStripSeparator6
             // 
@@ -324,6 +330,7 @@
             // 
             this.tstxtCildi.Name = "tstxtCildi";
             this.tstxtCildi.Size = new System.Drawing.Size(100, 25);
+            this.tstxtCildi.TextChanged += new System.EventHandler(this.tstxtAdi_TextChanged);
             // 
             // toolStrip2
             // 
@@ -361,6 +368,7 @@
             // 
             this.tstxtTarihBas.Name = "tstxtTarihBas";
             this.tstxtTarihBas.Size = new System.Drawing.Size(100, 25);
+            this.tstxtTarihBas.TextChanged += new System.EventHandler(this.tstxtAdi_TextChanged);
             // 
             // toolStripLabel8
             // 
@@ -372,6 +380,7 @@
             // 
             this.tstxtTarihBit.Name = "tstxtTarihBit";
             this.tstxtTarihBit.Size = new System.Drawing.Size(100, 25);
+            this.tstxtTarihBit.TextChanged += new System.EventHandler(this.tstxtAdi_TextChanged);
             // 
             // Musteriler
             // 

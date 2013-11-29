@@ -57,7 +57,7 @@ namespace SGSCRM
                         m.çıkışToolStripMenuItem.Enabled = true;
                         m.btnYeniMusteri.Enabled = true;
                         this.Close();
-                        Musteriler musteriform = new Musteriler(m) { MdiParent = m };
+                        Musteriler musteriform = new Musteriler() { MdiParent = m };
                         musteriform.Show();
                     }
                 }
